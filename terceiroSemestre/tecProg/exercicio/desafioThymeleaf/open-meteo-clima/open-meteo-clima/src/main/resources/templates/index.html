@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima Atual</title>
+</head>
+<body>
+
+<h1>Clima por coordenadas</h1>
+<form action="/buscar" method="get">
+    <div class="form-row">
+        <label for="latitude">Latitude</label>
+        <input type="number" id="latitude" name="latitude"
+               placeholder="Ex: -23.9618" step="any" required autocomplete="off"/>
+
+        <label for="longitude">Longitude</label>
+        <input type="number" id="longitude" name="longitude"
+               placeholder="Ex: -46.3322" step="any" required autocomplete="off"/>
+
+        <button type="submit">Zarpar!</button>
+    </div>
+</form>
+
+</body>
+</html>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado do Clima</title>
+</head>
+<body>
+
+<h1>Resultado da Expedição</h1>
+
+<div th:if="${encontrado}">
+    <h2>Coordenadas</h2>
+    <p>Latitude: <span th:text="${coordenada.latitude}"></span></p>
+    <p>Longitude: <span th:text="${coordenada.longitude}"></span></p>
+    <p>Fuso Horário: <span th:text="${coordenada.timezone}"></span></p>
+
+    <h2>Clima Atual</h2>
+    <p>Horário: <span th:text="${coordenada.climaAtual.time}"></span></p>
+    <p>Temperatura: <span th:text="${coordenada.climaAtual.temperature_2m}"></span> °C</p>
+    <p>Velocidade do Vento: <span th:text="${coordenada.climaAtual.windspeed_10m}"></span> km/h</p>
+    <p>Clima: <span th:text="${descricaoClima}"></span></p>
+</div>
+
+<div th:unless="${encontrado}">
+    <p>Não foi possível obter os dados para essa localização.</p>
+</div>
+
+<a href="/">Voltar</a>
+
+</body>
+</html>
