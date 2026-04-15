@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Funcionários - Streams & Lambdas</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: Georgia, serif;
+            background: #f5f3ee;
+            color: #1a1a1a;
+            padding: 48px 32px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: normal;
+            letter-spacing: -0.5px;
+            border-bottom: 2px solid #1a1a1a;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 48px;
+        }
+
+        /* ── SEÇÃO ── */
+        .secao {
+            margin-bottom: 48px;
+        }
+
+        .secao h2 {
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+
+        .secao h3 {
+            font-size: 18px;
+            font-weight: normal;
+            margin-bottom: 4px;
+        }
+
+        .secao p {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 16px;
+        }
+
+        /* ── TABELA ── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        thead tr {
+            border-bottom: 2px solid #1a1a1a;
+        }
+
+        thead th {
+            padding: 8px 12px;
+            text-align: left;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        tbody tr:hover {
+            background: #ede9e1;
+        }
+
+        tbody td {
+            padding: 10px 12px;
+        }
+
+        /* ── CARDS DE STATS ── */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .stat {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* ── DESTAQUE VETERANO ── */
+        .veterano-box {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-left: 4px solid #1a1a1a;
+            padding: 24px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .vet-nome {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .vet-info {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .vet-anos {
+            font-size: 40px;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .vet-anos-label {
+            font-size: 12px;
+            color: #888;
+            text-align: right;
+        }
+
+        /* ── LAMBDA SAÍDA ── */
+        .lambda-list {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 0;
+            list-style: none;
+        }
+
+        .lambda-list li {
+            padding: 10px 16px;
+            border-bottom: 1px solid #eee;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .lambda-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* ── DEPARTAMENTOS ── */
+        .depto-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .depto-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        .depto-nome {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .depto-media {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* ── TOTAL FOLHA ── */
+        .total-box {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 24px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total-label {
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        .total-value {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 48px 0;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 2px 8px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .aumento {
+            color: #2a7a2a;
+            font-size: 12px;
+            margin-left: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Funcionários <span style="color:#888; font-size:18px;">/ Streams &amp; Lambdas</span></h1>
+    <p class="subtitle">FATEC CPG · Tecnologia em Programação</p>
+
+
+    <div class="stats-row">
+        <div class="stat">
+            <div class="stat-label">Funcionários</div>
+            <div class="stat-value" th:text="${#lists.size(funcionarios)}">0</div>
+        </div>
+        <div class="stat">
+            <div class="stat-label">Folha Total</div>
+            <div class="stat-value" th:text="${'R$ ' + #numbers.formatDecimal(totalSalarios, 1, 'POINT', 2, 'COMMA')}">—</div>
+        </div>
+        <div class="stat">
+            <div class="stat-label">Filtrados (&gt; R$3k)</div>
+            <div class="stat-value" th:text="${#lists.size(filtrados)}">0</div>
+        </div>
+        <div class="stat">
+            <div class="stat-label">Com Aumento (5%)</div>
+            <div class="stat-value" th:text="${#lists.size(comAumento)}">0</div>
+        </div>
+    </div>
+
+
+    <div class="secao">
+        <h2>forEach</h2>
+        <h3>Lista Original <span class="tag">stream</span></h3>
+        <p>Todos os funcionários cadastrados no sistema.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Departamento</th>
+                    <th>Salário</th>
+                    <th>Anos de Serviço</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="f : ${funcionarios}">
+                    <td th:text="${f.nome}">—</td>
+                    <td th:text="${f.departamento}">—</td>
+                    <td th:text="${'R$ ' + #numbers.formatDecimal(f.salario, 1, 'POINT', 2, 'COMMA')}">—</td>
+                    <td th:text="${f.anosDeServico} + ' anos'">—</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr/>
+
+
+    <div class="secao">
+        <h2>filter</h2>
+        <h3>Filtragem — Salário &gt; R$ 3.000,00 <span class="tag">stream</span></h3>
+        <p>Funcionários com salário superior a R$ 3.000,00.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Departamento</th>
+                    <th>Salário</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="f : ${filtrados}">
+                    <td th:text="${f.nome}">—</td>
+                    <td th:text="${f.departamento}">—</td>
+                    <td th:text="${'R$ ' + #numbers.formatDecimal(f.salario, 1, 'POINT', 2, 'COMMA')}">—</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr/>
+
+
+    <div class="secao">
+        <h2>map</h2>
+        <h3>Mapeamento — Aumento de 5% <span class="tag">stream</span></h3>
+        <p>Funcionários com mais de 10 anos de serviço recebem aumento de 5%.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Departamento</th>
+                    <th>Novo Salário</th>
+                    <th>Anos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="f : ${comAumento}">
+                    <td th:text="${f.nome}">—</td>
+                    <td th:text="${f.departamento}">—</td>
+                    <td>
+                        <span th:text="${'R$ ' + #numbers.formatDecimal(f.salario, 1, 'POINT', 2, 'COMMA')}">—</span>
+                        <span class="aumento">+5%</span>
+                    </td>
+                    <td th:text="${f.anosDeServico} + ' anos'">—</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr/>
+
+
+    <div class="secao">
+        <h2>sorted</h2>
+        <h3>Ordenação Alfabética <span class="tag">stream</span></h3>
+        <p>Funcionários ordenados pelo nome em ordem alfabética.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Departamento</th>
+                    <th>Salário</th>
+                    <th>Anos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="f, iter : ${ordenados}">
+                    <td style="color:#aaa;" th:text="${iter.index + 1}">1</td>
+                    <td th:text="${f.nome}">—</td>
+                    <td th:text="${f.departamento}">—</td>
+                    <td th:text="${'R$ ' + #numbers.formatDecimal(f.salario, 1, 'POINT', 2, 'COMMA')}">—</td>
+                    <td th:text="${f.anosDeServico} + ' anos'">—</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr/>
+
+
+    <div class="secao">
+        <h2>reduce</h2>
+        <h3>Total da Folha Salarial <span class="tag">stream</span></h3>
+        <p>Soma total calculada com reduce sobre todos os salários.</p>
+        <div class="total-box">
+            <div class="total-label">Total gasto com salários</div>
+            <div class="total-value" th:text="${'R$ ' + #numbers.formatDecimal(totalSalarios, 1, 'POINT', 2, 'COMMA')}">—</div>
+        </div>
+    </div>
+
+    <hr/>
+
+
+    <div class="secao">
+        <h2>groupingBy</h2>
+        <h3>Média Salarial por Departamento <span class="tag">stream</span></h3>
+        <p>Média calculada agrupando funcionários pelo departamento.</p>
+        <div class="depto-row">
+            <div class="depto-card" th:each="entry : ${mediaPorDepto}">
+                <div class="depto-nome" th:text="${entry.key}">—</div>
+                <div class="depto-media" th:text="${'R$ ' + #numbers.formatDecimal(entry.value, 1, 'POINT', 2, 'COMMA')}">—</div>
+                <div style="font-size:11px; color:#aaa; margin-top:4px;">média salarial</div>
+            </div>
+        </div>
+    </div>
+
+    <hr/>
+
+
+
+    <div class="secao">
+        <h2>max</h2>
+        <h3>Funcionário com Maior Tempo de Serviço <span class="tag">desafio</span></h3>
+        <p>Identificado via <code>stream().max(Comparator.comparingInt(...))</code>.</p>
+
+        <div class="veterano-box" th:if="${veterano != null}">
+            <div>
+                <div class="vet-nome" th:text="${veterano.nome}">—</div>
+
+
+                <div class="vet-info"
+                     th:text="${veterano.departamento + ' · R$ ' + #numbers.formatDecimal(veterano.salario, 1, 'POINT', 2, 'COMMA')}">
+                    —
+                </div>
+
+            </div>
+
+            <div style="text-align:right;">
+                <div class="vet-anos" th:text="${veterano.anosDeServico}">0</div>
+                <div class="vet-anos-label">anos de serviço</div>
+            </div>
+        </div>
+    </div>
+
+    <hr/>
+
+
+    <div class="secao">
+        <h2>lambda</h2>
+        <h3>Saída Formatada Personalizada <span class="tag">desafio</span></h3>
+        <p>Formato: Funcionário: [nome], Departamento: [departamento], Salário: R$ [salário]</p>
+        <ul class="lambda-list">
+            <li th:each="f : ${ordenados}"
+                th:text="${'Funcionário: ' + f.nome + ', Departamento: ' + f.departamento + ', Salário: R$ ' + #numbers.formatDecimal(f.salario, 1, 'POINT', 2, 'COMMA')}">
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
