@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+          crossorigin="anonymous">
+    <title>Cadastrar Produto</title>
+</head>
+<body>
+<div class="container mt-5">
+
+    <!-- Mensagem de erro de validação -->
+    <div class="alert alert-danger" role="alert" th:if="${erro}" th:text="${erro}"></div>
+
+    <form th:action="@{/cadastrar}" th:object="${produto}" method="post">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input class="form-control" type="text" th:field="*{nome}" placeholder="Ex. Notebook" required/>
+        </div>
+        <div class="form-group">
+            <label for="preco">Preço</label>
+            <input class="form-control" type="number" step="0.01" th:field="*{preco}" placeholder="Ex. 100.00" required/>
+        </div>
+
+        <!-- SELECT de categoria com opções fixas -->
+        <div class="form-group">
+            <label for="categoria">Categoria</label>
+            <select class="form-control" th:field="*{categoria}" required>
+                <option value=""> Selecione uma categoria </option>
+                <option value="Eletrônico">Eletrônico</option>
+                <option value="Vestuário">Vestuário</option>
+                <option value="Alimento">Alimento</option>
+                <option value="Outros">Outros</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <input class="form-control" type="text" th:field="*{descricao}" placeholder="Ex. Produto Confiável" required/>
+        </div>
+        <div class="form-group">
+            <label for="estoque">Estoque</label>
+            <input class="form-control" type="number" th:field="*{estoque}" placeholder="Ex. 10" required/>
+        </div>
+        <button class="btn btn-primary" type="submit">Cadastrar</button>
+    </form>
+    <a class="btn btn-secondary mt-3" href="/lista">Ver Lista de Produtos</a>
+</div>
+</body>
+</html>
