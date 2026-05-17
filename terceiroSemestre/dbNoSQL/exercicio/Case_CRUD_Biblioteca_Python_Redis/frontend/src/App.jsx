@@ -214,7 +214,7 @@ function App() {
 
     if (askConfirm) {
       const confirmed = await requestConfirmation({
-        title: "Confirmar acao",
+        title: "Confirmar ação",
         message: action.confirm,
         confirmText: "Continuar",
       });
@@ -980,7 +980,7 @@ function AdminPage({ books, users, session, onConfirm, onDone, onError }) {
       : "Confirma o cadastro deste livro?";
 
     const confirmed = await onConfirm({
-      title: editingId ? "Salvar alteracoes" : "Cadastrar livro",
+      title: editingId ? "Salvar alterações" : "Cadastrar livro",
       message,
       confirmText: editingId ? "Salvar" : "Cadastrar",
     });
