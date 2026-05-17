@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="900" viewBox="0 0 640 900" role="img" aria-label="Capa indisponivel">
+  <rect width="640" height="900" fill="#e8efe8"/>
+  <rect x="70" y="90" width="500" height="720" rx="24" fill="#ffffff" stroke="#6f8f72" stroke-width="10"/>
+  <rect x="130" y="170" width="380" height="34" rx="17" fill="#6f8f72"/>
+  <rect x="130" y="230" width="280" height="24" rx="12" fill="#9daf9a"/>
+  <path d="M210 390h220v180H210z" fill="#f7f4ed" stroke="#6f8f72" stroke-width="8"/>
+  <path d="M246 532l52-68 46 48 32-38 48 58H246z" fill="#6f8f72"/>
+  <circle cx="382" cy="430" r="26" fill="#9daf9a"/>
+  <rect x="130" y="660" width="380" height="18" rx="9" fill="#c8d7c6"/>
+  <rect x="130" y="700" width="320" height="18" rx="9" fill="#c8d7c6"/>
+</svg>

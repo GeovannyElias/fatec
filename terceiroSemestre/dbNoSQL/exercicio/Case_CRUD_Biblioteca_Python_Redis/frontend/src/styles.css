@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f7f4ed;
+  color: #1f2933;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.book-waiting {
+  filter: grayscale(1);
+}
+
+@layer components {
+  .book-card {
+    @apply flex min-h-[430px] flex-col overflow-hidden rounded-lg border border-ink/10 bg-white shadow-sm transition duration-300 ease-out hover:-translate-y-1 hover:shadow-soft;
+  }
+
+  .book-card-cover {
+    @apply relative aspect-[4/5] max-h-72 overflow-hidden rounded-t-lg bg-cloud sm:aspect-[3/4];
+  }
+
+  .book-card-image {
+    @apply h-full w-full object-cover transition duration-500 ease-out;
+  }
+
+  .book-card:hover .book-card-image {
+    transform: scale(1.04);
+  }
+
+  .book-card-status {
+    @apply absolute right-3 top-3 rounded-full px-3 py-1 text-xs font-bold shadow-sm backdrop-blur;
+  }
+
+  .book-card-status-available {
+    @apply bg-white/90 text-moss;
+  }
+
+  .book-card-status-unavailable {
+    @apply bg-ink/75 text-white;
+  }
+
+  .book-card-body {
+    @apply flex flex-1 flex-col gap-4 p-5;
+  }
+
+  .book-card-title {
+    @apply text-xl font-extrabold leading-tight text-ink;
+  }
+
+  .book-card-author {
+    @apply mt-2 text-sm font-bold text-moss;
+  }
+
+  .book-card-category {
+    @apply mt-1 text-sm font-medium text-ink/55;
+  }
+
+  .book-card-meta {
+    @apply grid grid-cols-2 gap-3;
+  }
+
+  .book-card-info {
+    @apply rounded-lg bg-paper px-3 py-3;
+  }
+
+  .book-card-info p {
+    @apply text-xs font-bold uppercase text-ink/45;
+  }
+
+  .book-card-info strong {
+    @apply mt-1 block text-base font-extrabold text-ink;
+  }
+
+  .book-card-note {
+    @apply rounded-lg bg-ink/5 px-3 py-2 text-xs font-bold text-ink/60;
+  }
+
+  .book-card-actions {
+    @apply mt-auto grid grid-cols-3 gap-2 border-t border-ink/10 bg-paper/70 p-3;
+  }
+
+  .book-card-action {
+    @apply flex min-h-14 flex-col items-center justify-center gap-1 rounded-lg bg-moss text-xs font-bold text-white transition duration-200 ease-out hover:-translate-y-0.5 hover:bg-moss/90 focus:outline-none focus:ring-4 focus:ring-moss/20 disabled:cursor-not-allowed disabled:bg-ink/15 disabled:text-ink/35 disabled:hover:translate-y-0;
+  }
+
+  .book-card-action-icon {
+    @apply grid h-5 w-5 place-items-center;
+  }
+}
