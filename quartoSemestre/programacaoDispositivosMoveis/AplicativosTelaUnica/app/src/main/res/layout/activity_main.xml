@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aplicativos de Tela Única"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1. Operações matemáticas"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
+
+                <EditText
+                    android:id="@+id/etNumero1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Primeiro número"
+                    android:inputType="numberDecimal|numberSigned" />
+
+                <EditText
+                    android:id="@+id/etNumero2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Segundo número"
+                    android:inputType="numberDecimal|numberSigned" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <Button android:id="@+id/btnSomar" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="+" />
+                    <Button android:id="@+id/btnSubtrair" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="−" />
+                    <Button android:id="@+id/btnMultiplicar" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="×" />
+                    <Button android:id="@+id/btnDividir" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="÷" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvResultadoOperacoes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Resultado:"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2. Conversor de temperatura"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
+
+                <EditText
+                    android:id="@+id/etCelsius"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Temperatura em Celsius (°C)"
+                    android:inputType="numberDecimal|numberSigned" />
+
+                <Button
+                    android:id="@+id/btnConverter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Converter para Fahrenheit" />
+
+                <TextView
+                    android:id="@+id/tvResultadoTemperatura"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resultado:"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3. Primeira Lei de Ohm"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="V = R × I — preencha dois campos"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+
+                <EditText
+                    android:id="@+id/etTensao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tensão (V)"
+                    android:inputType="numberDecimal|numberSigned" />
+
+                <EditText
+                    android:id="@+id/etResistencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Resistência (Ω)"
+                    android:inputType="numberDecimal|numberSigned" />
+
+                <EditText
+                    android:id="@+id/etCorrente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Corrente (A)"
+                    android:inputType="numberDecimal|numberSigned" />
+
+                <Button
+                    android:id="@+id/btnCalcularOhm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Calcular" />
+
+                <TextView
+                    android:id="@+id/tvResultadoOhm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resultado:"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</ScrollView>
