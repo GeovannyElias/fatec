@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CadastroAlunos</string>
+    <string name="titulo_cadastro">Cadastro de aluno</string>
+    <string name="dica_nome">Digite o nome do aluno</string>
+    <string name="continuar">Continuar</string>
+    <string name="erro_nome_obrigatorio">Informe o nome do aluno</string>
+    <string name="titulo_matricula">Dados do aluno</string>
+    <string name="nome_aluno">Aluno: %1$s</string>
+    <string name="gerar_matricula">Gerar matrícula</string>
+    <string name="matricula_gerada">Matrícula: %1$d</string>
+</resources>
