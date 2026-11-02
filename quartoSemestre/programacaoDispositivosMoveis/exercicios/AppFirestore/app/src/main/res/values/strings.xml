@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AppFirestore</string>
+    <string name="titulo_cadastro">Cadastro de Clientes</string>
+    <string name="subtitulo_cadastro">Preencha os dados para salvar no Firestore</string>
+    <string name="hint_nome">Nome</string>
+    <string name="hint_cpf">CPF</string>
+    <string name="btn_cadastrar">Cadastrar</string>
+    <string name="btn_limpar">Limpar</string>
+    <string name="erro_nome">Informe o nome</string>
+    <string name="erro_cpf">CPF deve ter 11 dígitos</string>
+    <string name="msg_sucesso">Cliente cadastrado com sucesso!</string>
+    <string name="msg_erro">Erro ao cadastrar: %1$s</string>
+</resources>
