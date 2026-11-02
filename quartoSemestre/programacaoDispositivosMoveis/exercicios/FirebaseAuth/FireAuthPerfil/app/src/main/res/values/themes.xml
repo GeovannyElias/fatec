@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.FireAuthPerfil" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/laranja</item>
+        <item name="colorOnPrimary">@color/branco</item>
+        <item name="colorSecondary">@color/laranja_escuro</item>
+        <item name="android:windowBackground">@color/fundo</item>
+        <item name="android:statusBarColor">@color/laranja_escuro</item>
+    </style>
+</resources>

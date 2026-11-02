@@ -1,0 +1,8 @@
+<resources>
+    <color name="laranja">#FF8F00</color>
+    <color name="laranja_escuro">#E65100</color>
+    <color name="fundo">#FFF8E1</color>
+    <color name="texto">#3E2723</color>
+    <color name="vermelho">#C62828</color>
+    <color name="branco">#FFFFFF</color>
+</resources>
